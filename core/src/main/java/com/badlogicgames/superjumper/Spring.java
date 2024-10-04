@@ -16,23 +16,11 @@
 
 package com.badlogicgames.superjumper;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+public class Spring extends GameObject {
+	public static float SPRING_WIDTH = 0.3f;
+	public static float SPRING_HEIGHT = 0.3f;
 
-public class SuperJumper extends Game {
-	// used by all screens
-	public SpriteBatch batcher;
-	
-	@Override
-	public void create () {
-		batcher = new SpriteBatch();
-		Settings.load();
-		Assets.load();
-		setScreen(new MainMenuScreen(this));
-	}
-	
-	@Override
-	public void render() {
-		super.render();
+	public Spring (float x, float y) {
+		super(x, y, SPRING_WIDTH, SPRING_HEIGHT);
 	}
 }

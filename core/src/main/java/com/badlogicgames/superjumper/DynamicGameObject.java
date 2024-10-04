@@ -16,23 +16,15 @@
 
 package com.badlogicgames.superjumper;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
-public class SuperJumper extends Game {
-	// used by all screens
-	public SpriteBatch batcher;
-	
-	@Override
-	public void create () {
-		batcher = new SpriteBatch();
-		Settings.load();
-		Assets.load();
-		setScreen(new MainMenuScreen(this));
-	}
-	
-	@Override
-	public void render() {
-		super.render();
+public class DynamicGameObject extends GameObject {
+	public final Vector2 velocity;
+	public final Vector2 accel;
+
+	public DynamicGameObject (float x, float y, float width, float height) {
+		super(x, y, width, height);
+		velocity = new Vector2();
+		accel = new Vector2();
 	}
 }

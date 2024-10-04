@@ -16,23 +16,12 @@
 
 package com.badlogicgames.superjumper;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+public class Castle extends GameObject {
+	public static float CASTLE_WIDTH = 1.7f;
+	public static float CASTLE_HEIGHT = 1.7f;
 
-public class SuperJumper extends Game {
-	// used by all screens
-	public SpriteBatch batcher;
-	
-	@Override
-	public void create () {
-		batcher = new SpriteBatch();
-		Settings.load();
-		Assets.load();
-		setScreen(new MainMenuScreen(this));
+	public Castle (float x, float y) {
+		super(x, y, CASTLE_WIDTH, CASTLE_HEIGHT);
 	}
-	
-	@Override
-	public void render() {
-		super.render();
-	}
+
 }

@@ -16,23 +16,19 @@
 
 package com.badlogicgames.superjumper;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+public class Coin extends GameObject {
+	public static final float COIN_WIDTH = 0.5f;
+	public static final float COIN_HEIGHT = 0.8f;
+	public static final int COIN_SCORE = 10;
 
-public class SuperJumper extends Game {
-	// used by all screens
-	public SpriteBatch batcher;
-	
-	@Override
-	public void create () {
-		batcher = new SpriteBatch();
-		Settings.load();
-		Assets.load();
-		setScreen(new MainMenuScreen(this));
+	float stateTime;
+
+	public Coin (float x, float y) {
+		super(x, y, COIN_WIDTH, COIN_HEIGHT);
+		stateTime = 0;
 	}
-	
-	@Override
-	public void render() {
-		super.render();
+
+	public void update (float deltaTime) {
+		stateTime += deltaTime;
 	}
 }

@@ -16,23 +16,28 @@
 
 package com.badlogicgames.superjumper;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class SuperJumper extends Game {
-	// used by all screens
-	public SpriteBatch batcher;
-	
-	@Override
-	public void create () {
-		batcher = new SpriteBatch();
-		Settings.load();
-		Assets.load();
-		setScreen(new MainMenuScreen(this));
+public class Animation {
+	public static final int ANIMATION_LOOPING = 0;
+	public static final int ANIMATION_NONLOOPING = 1;
+
+	final TextureRegion[] keyFrames;
+	final float frameDuration;
+
+	public Animation (float frameDuration, TextureRegion... keyFrames) {
+		this.frameDuration = frameDuration;
+		this.keyFrames = keyFrames;
 	}
-	
-	@Override
-	public void render() {
-		super.render();
+
+	public TextureRegion getKeyFrame (float stateTime, int mode) {
+		int frameNumber = (int)(stateTime / frameDuration);
+
+		if (mode == ANIMATION_NONLOOPING) {
+			frameNumber = Math.min(keyFrames.length - 1, frameNumber);
+		} else {
+			frameNumber = frameNumber % keyFrames.length;
+		}
+		return keyFrames[frameNumber];
 	}
 }
