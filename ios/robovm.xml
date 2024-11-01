@@ -14,7 +14,11 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>data</directory>
+      <directory>./data</directory>
+      <includes>
+        <include>**</include>
+      </includes>
+      <skipPngCrush>true</skipPngCrush>
     </resource>
   </resources>
   <forceLinkClasses>
